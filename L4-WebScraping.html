@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Scraping</title>
+</head>
+<body>
+  <script>
+    //target
+    let url = "https://www.gordonchan.app";
+
+    // cors-anywhere
+    let url2 = "https://cors-anywhere.herokuapp.com/" + url;
+
+    fetch(url2)
+    .then(response => response.text())
+    .then(html => {
+      //DOMParser
+      let parser = new DOMParser();
+      let doc = parser.parseFromString(html, "text/html");
+      let svgElem = doc.querySelector("header svg");
+      document.body.appendChild(svgElem);
+    })
+
+    
+    
+  </script>
+</body>
+</html>
