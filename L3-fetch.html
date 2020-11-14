@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fetch</title>
+</head>
+<body>
+  <div>
+    <h3></h3>
+    <img>
+  </div>
+  <script>
+    let url = "https://randomuser.me/api";
+
+    fetch(url)
+    .then(response => response.json())
+    .then(response => response.results[0])
+    .then(printData);
+
+    function printData(data){
+      console.log(data.picture);
+      const {first, last} = data.name;
+      const {thumbnail} = data.picture;
+      
+      document.querySelector("h3").innerText = `${first} ${last}`;
+      document.querySelector("img").src = thumbnail;
+
+    }
+  </script>
+</body>
+</html>
